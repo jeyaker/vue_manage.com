@@ -77,7 +77,7 @@
     <el-form-item label="上传店铺头像">
       <el-upload
         class="avatar-uploader"
-        action="https://jsonplaceholder.typicode.com/posts/"
+        :action="action"
         :show-file-list="false"
         :on-success="logoSuccess"
       >
@@ -88,7 +88,7 @@
     <el-form-item label="上传营业执照">
       <el-upload
         class="avatar-uploader"
-        action="https://jsonplaceholder.typicode.com/posts/"
+        :action="action"
         :show-file-list="false"
         :on-success="businessSuccess"
       >
@@ -99,7 +99,7 @@
     <el-form-item label="上传餐饮服务许可证">
       <el-upload
         class="avatar-uploader"
-        action="https://jsonplaceholder.typicode.com/posts/"
+        :action="action"
         :show-file-list="false"
         :on-success="cateringSuccess"
       >
@@ -107,7 +107,7 @@
         <i v-else class="el-icon-plus avatar-uploader-icon"></i>
       </el-upload>
     </el-form-item>
-    <el-form-item label="优惠活动">
+    <!-- <el-form-item label="优惠活动">
       <el-select v-model="value" clearable placeholder="请选择">
         <el-option
           v-for="item in activities"
@@ -128,7 +128,7 @@
           </template>
         </el-table-column>
       </el-table>
-    </el-form-item>
+    </el-form-item>-->
     <el-form-item class="btn">
       <el-button type="primary" @click="submitForm('ruleForm')" :plain="true">立即创建</el-button>
     </el-form-item>
@@ -221,6 +221,7 @@ export default {
       logoUrl: "",
       businessUrl: "",
       cateringUrl: "",
+      action: "http://localhost:3000/upload",
       // 优惠活动
       activities: [
         {
@@ -281,14 +282,17 @@ export default {
     },
     ...mapActions(["add"]),
     // 上传图片
-    logoSuccess(res, file) {
-      this.logoUrl = URL.createObjectURL(file.raw);
+    logoSuccess(res, file, filelist) {
+      // console.log("res.url", res.url);
+      // console.log("file", file);
+      // console.log("filelist", filelist);
+      this.logoUrl = res.url;
     },
     businessSuccess(res, file) {
-      this.businessUrl = URL.createObjectURL(file.raw);
+      this.businessUrl = res.url;
     },
     cateringSuccess(res, file) {
-      this.cateringUrl = URL.createObjectURL(file.raw);
+      this.cateringUrl = res.url;
     },
     // table
     handleDelete(index, row) {
@@ -309,12 +313,13 @@ export default {
             delivery: this.delivery,
             price: this.price,
             startTime: this.startTime,
-            endTime: this.endTime
-            // logoUrl: this.logoUrl,
-            // businessUrl: this.businessUrl,
-            // cateringUrl: this.cateringUrl
+            endTime: this.endTime,
+            //  图片
+            logoUrl: this.logoUrl,
+            businessUrl: this.businessUrl,
+            cateringUrl: this.cateringUrl
           }).then(res => {
-            console.log(res);
+            // console.log(res);
 
             switch (res.data.status) {
               case 0:

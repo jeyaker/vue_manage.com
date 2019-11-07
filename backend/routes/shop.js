@@ -8,6 +8,7 @@ const {
 
 router.route('/')
     .post(async (req, res, next) => {
+        console.log(req.bdoy);
         const result = await shop.add(req.body);
 
         res.render('shop', {

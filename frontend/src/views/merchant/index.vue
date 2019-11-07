@@ -44,6 +44,30 @@
             <span>起送时间：{{ props.row.startTime }}</span>&nbsp;
             <span>结束时间：{{ props.row.endTime }}</span>
           </el-form-item>
+          <el-form-item label="店铺头像">
+            <img
+              style="width:200px;height:200px;margin:10px 0"
+              :src="props.row.logoUrl"
+              v-if="props.row.logoUrl"
+              alt="..."
+            />
+          </el-form-item>
+          <el-form-item label="营业执照">
+            <img
+              style="width:200px;height:200px;margin:10px 0"
+              :src="props.row.businessUrl"
+              v-if="props.row.businessUrl"
+              alt="..."
+            />
+          </el-form-item>
+          <el-form-item label="餐饮服务许可证">
+            <img
+              style="width:200px;height:200px;margin:10px 0"
+              :src="props.row.cateringUrl"
+              v-if="props.row.cateringUrl"
+              alt="..."
+            />
+          </el-form-item>
         </el-form>
       </template>
     </el-table-column>
@@ -64,7 +88,7 @@
   font-size: 0;
 }
 .demo-table-expand label {
-  width: 90px;
+  width: 120px;
   color: #99a9bf;
 }
 .demo-table-expand .el-form-item {

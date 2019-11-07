@@ -9,6 +9,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const regRouter = require('./routes/reg');
 const loginRouter = require('./routes/login');
+const uploadRouter = require('./routes/upload');
 // const changeRouter = require('./routes/change');
 // const listRouter = require('./routes/list');
 
@@ -40,6 +41,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/reg', regRouter);
 app.use('/login', loginRouter);
+app.use('/upload', uploadRouter);
 // app.use('/change', changeRouter);
 // app.use('/', listRouter);
 

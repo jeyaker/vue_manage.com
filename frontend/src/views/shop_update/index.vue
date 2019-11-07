@@ -98,7 +98,7 @@
         <i v-else class="el-icon-plus avatar-uploader-icon"></i>
       </el-upload>
     </el-form-item>
-    <el-form-item label="优惠活动">
+    <!-- <el-form-item label="优惠活动">
       <el-select v-model="value" clearable placeholder="请选择">
         <el-option
           v-for="item in activities"
@@ -119,7 +119,7 @@
           </template>
         </el-table-column>
       </el-table>
-    </el-form-item>
+    </el-form-item>-->
     <el-form-item class="btn">
       <el-button type="primary" @click="submitForm('ruleForm')" :plain="true">立即创建</el-button>
     </el-form-item>
