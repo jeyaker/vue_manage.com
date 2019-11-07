@@ -8,6 +8,21 @@ var app = require('../app');
 var debug = require('debug')('backend:server');
 var http = require('http');
 
+
+
+// 创建upload文件夹
+var fs = require('fs');
+var path = require('path');
+
+var p = path.join(__dirname, '../public/upload');
+fs.readFile(p, (err, data) => {
+  if (err) {
+    fs.mkdir(p, (err) => {
+      if (err) throw err;
+    });
+  }
+});
+
 /**
  * Get port from environment and store in Express.
  */
