@@ -7,6 +7,7 @@
     ref="ruleForm"
     label-width="160px"
     class="demo-ruleForm"
+    enctype="multipart/form-data"
   >
     <!-- input -->
     <el-form-item label="id" prop="id">

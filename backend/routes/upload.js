@@ -14,10 +14,11 @@ var storage = multer.diskStorage({
         cb(null, path.join(__dirname, '../public/upload'));
     },
     filename: function (req, file, cb) {
-        const type = file.originalname.slice(file.originalname.indexOf('.')); // 获取图片类型
-        cb(null, 'upload-' + Date.now() + type);
+        const name = 'upload-' + Date.now() + file.originalname.slice(file.originalname.indexOf('.')); // 获取图片类型
+        cb(null, name);
 
-        url = 'http://localhost:3000/upload/upload-' + Date.now() + type;
+        url = 'http://localhost:3000/upload/' + name;
+        // console.log(url);
     }
 })
 
